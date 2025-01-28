@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block title %}Персонажи ПЧК{% endblock %}
+
+{% block content %}
+  {% for object in object_list %}
+     {{object}}<br>
+ {% endfor %}
+{% endblock %}
