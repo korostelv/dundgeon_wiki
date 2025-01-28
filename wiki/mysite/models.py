@@ -1,5 +1,6 @@
 from django.db import models
 
+
 class Race(models.Model):
     name = models.CharField(max_length=20, blank=False, null=True, verbose_name='Раса')
 
@@ -7,19 +8,18 @@ class Race(models.Model):
         return self.name
 
 
-
-
 class Personage(models.Model):
-    name = models.CharField(max_length=30, blank=False,null=True, verbose_name='Имя персонажа')
+    name = models.CharField(max_length=30, blank=False, null=True, verbose_name='Имя персонажа')
     race = models.ForeignKey('Race', blank=True, null=True, on_delete=models.CASCADE, verbose_name='Раса')
-    description = models.TextField(blank=False,null=True, verbose_name='Описание')
-    power = models.IntegerField( blank=False,null=True, verbose_name='Сила')
-    dexterity = models.IntegerField( blank=False,null=True, verbose_name='Ловкость')
-    endurance = models.IntegerField(blank=False,null=True, verbose_name='Выносливость')
-    wisdom = models.IntegerField( blank=False,null=True, verbose_name='Мудрость')
-    intellect = models.IntegerField(blank=False,null=True, verbose_name='Интеллект')
-    charisma= models.IntegerField(blank=False,null=True, verbose_name='Харизма')
-    gamer = models.ForeignKey('Gamer', blank=True, null=True, on_delete=models.CASCADE, verbose_name='Игрок', related_name='personages_list')
+    description = models.TextField(blank=False, null=True, verbose_name='Описание')
+    power = models.IntegerField(blank=False, null=True, verbose_name='Сила')
+    dexterity = models.IntegerField(blank=False, null=True, verbose_name='Ловкость')
+    endurance = models.IntegerField(blank=False, null=True, verbose_name='Выносливость')
+    wisdom = models.IntegerField(blank=False, null=True, verbose_name='Мудрость')
+    intellect = models.IntegerField(blank=False, null=True, verbose_name='Интеллект')
+    charisma = models.IntegerField(blank=False, null=True, verbose_name='Харизма')
+    gamer = models.ForeignKey('Gamer', blank=True, null=True, on_delete=models.CASCADE, verbose_name='Игрок',
+                              related_name='personages_list')
     image = models.ImageField(upload_to='personages', blank=True, null=True, verbose_name='Изображение персонажа')
 
     def __str__(self):
@@ -28,7 +28,7 @@ class Personage(models.Model):
 
 class Gamer(models.Model):
     name = models.CharField(max_length=40, blank=False, verbose_name='Имя игрока')
-    personages = models.ManyToManyField('Personage', verbose_name='Персонажи', related_name='gamers')
+    personages = models.ManyToManyField('Personage', blank=True, verbose_name='Персонажи', related_name='gamers')
     image = models.ImageField(upload_to='gamers', blank=True, null=True, verbose_name='Фото игрока')
 
     def __str__(self):
@@ -41,7 +41,7 @@ class Gamer(models.Model):
 
 
 class Storyline(models.Model):
-    line = models.CharField(max_length=50,blank=False, verbose_name='Сюжетная линия')
+    line = models.CharField(max_length=50, blank=False, verbose_name='Сюжетная линия')
 
     def __str__(self):
         return self.line
@@ -52,7 +52,8 @@ class Release(models.Model):
     title = models.CharField(max_length=50, blank=False, verbose_name='Название выпуска')
     gamers = models.ManyToManyField('Gamer', verbose_name='Игроки')
     personages = models.ManyToManyField('Personage', verbose_name='Персонажи')
-    line = models.ForeignKey('StoryLine', blank=True, null=True, on_delete=models.CASCADE, verbose_name='Сюжетная линия')
+    line = models.ForeignKey('Storyline', blank=True, null=True, on_delete=models.CASCADE,
+                             verbose_name='Сюжетная линия')
     url = models.URLField(max_length=150, blank=False, verbose_name='Ссылка')
     image = models.ImageField(upload_to='releases', blank=True, null=True, verbose_name='Афиша')
 
