@@ -19,6 +19,7 @@ class Personage(models.Model):
     wisdom = models.IntegerField( blank=False,null=True, verbose_name='Мудрость')
     intellect = models.IntegerField(blank=False,null=True, verbose_name='Интеллект')
     charisma= models.IntegerField(blank=False,null=True, verbose_name='Харизма')
+    gamer = models.ForeignKey('Gamer', blank=True, null=True, on_delete=models.CASCADE, verbose_name='Игрок', related_name='personages_list')
     image = models.ImageField(upload_to='personages', blank=True, null=True, verbose_name='Изображение персонажа')
 
     def __str__(self):
@@ -27,7 +28,7 @@ class Personage(models.Model):
 
 class Gamer(models.Model):
     name = models.CharField(max_length=40, blank=False, verbose_name='Имя игрока')
-    personages = models.ManyToManyField('Personage', verbose_name='Персонажи')
+    personages = models.ManyToManyField('Personage', verbose_name='Персонажи', related_name='gamers')
     image = models.ImageField(upload_to='gamers', blank=True, null=True, verbose_name='Фото игрока')
 
     def __str__(self):
@@ -66,5 +67,3 @@ class Release(models.Model):
 
     display_gamers.short_description = 'Игроки'
     display_personages.short_description = 'Персонажи'
-
-

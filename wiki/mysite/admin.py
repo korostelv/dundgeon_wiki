@@ -11,8 +11,8 @@ class RaceAdmin(admin.ModelAdmin):
 
 class PersonageAdmin(admin.ModelAdmin):
     model = Personage
-    list_display = ['id', 'name','race', 'power', 'dexterity', 'endurance', 'wisdom', 'intellect', 'charisma', 'image']
-    # list_filter = []
+    list_display = ['id', 'name','race', 'power', 'dexterity', 'endurance', 'wisdom', 'intellect', 'charisma','gamer', 'image']
+    list_filter = ['race','gamer']
     list_display_links = ['id', 'name']
 
 
