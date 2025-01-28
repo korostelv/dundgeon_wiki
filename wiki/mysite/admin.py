@@ -25,7 +25,7 @@ class GamerAdmin(admin.ModelAdmin):
 
 class ReleaseAdmin(admin.ModelAdmin):
     model = Release
-    list_display = ['id', 'number', 'title', 'display_gamers', 'display_personages','line',  'url',]
+    list_display = ['id', 'number', 'title', 'display_gamers', 'display_personages','line',  'url', 'image']
     list_display_links = ['id', 'number', 'title']
     list_filter = ['line']
 

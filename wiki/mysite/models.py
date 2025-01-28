@@ -53,6 +53,7 @@ class Release(models.Model):
     personages = models.ManyToManyField('Personage', verbose_name='Персонажи')
     line = models.ForeignKey('StoryLine', blank=True, null=True, on_delete=models.CASCADE, verbose_name='Сюжетная линия')
     url = models.URLField(max_length=150, blank=False, verbose_name='Ссылка')
+    image = models.ImageField(upload_to='releases', blank=True, null=True, verbose_name='Афиша')
 
     def __str__(self):
         return f'{self.number}. {self.title}'
