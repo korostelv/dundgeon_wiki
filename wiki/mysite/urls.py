@@ -1,20 +1,22 @@
 from django.urls import path
 from rest_framework import routers
-from .views import index,  PersonageListView, ReleaseListView, ReleaseDetailView
+from .views import index, PersonageListView, ReleaseListView, ReleaseDetailView, GamerListView, GamerDetailView, ReleasAPIView
 
-# from . import views
+
 
 
 app_name ='mysite'
 
-# router = routers.DefaultRouter()
-# router.register('api/___', ___APIView)
+router = routers.DefaultRouter()
+router.register('api/releases', ReleasAPIView)
 
 
 urlpatterns = [
     path('', index, name="index"),
     path("personages/", PersonageListView.as_view(), name="personages"),
     path("releases/", ReleaseListView.as_view(), name="releases"),
-    path("releases/<int:pk>", ReleaseDetailView.as_view(), name="release_detail"),
+    path("gamers/", GamerListView.as_view(), name="gamers"),
+    path('releases/<int:pk>/', ReleaseDetailView.as_view(), name='release_detail'),
+    path('gamers/<int:pk>/', GamerDetailView.as_view(), name='gamer_detail'),
 ]
-# urlpatterns += router.urls
+urlpatterns += router.urls

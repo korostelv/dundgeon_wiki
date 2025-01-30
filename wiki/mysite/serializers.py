@@ -1,8 +1,8 @@
 from rest_framework import serializers
-# from .models import
+from .models import Release
 
 
-# class ___Serializer(serializers.ModelSerializer):
-#     class Meta:
-#         model = ___
-#         fields = '__all__'
+class ReleaseSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Release
+        fields = '__all__'

@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% block title %}Выпуски ПЧК{% endblock %}
+{% block title %}Участники шоу{% endblock %}
 
 {% block content %}
 <ul>
@@ -8,7 +8,7 @@
     <li>
 
         <img src="{{ object.image.url }}" alt="{{ object.title }}" width="200"><br>
-        <a href="/releases/{{object.pk}}">{{object}}</a>
+        <a href="/gamers/{{object.pk}}">{{object}}</a>
 
     </li>
 

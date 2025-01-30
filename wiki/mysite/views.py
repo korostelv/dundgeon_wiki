@@ -4,8 +4,8 @@ from django.views.generic.list import ListView
 
 
 from rest_framework import viewsets
-# from .serializers import
-from .models import Personage, Release
+from .serializers import ReleaseSerializer
+from .models import Personage, Release, Gamer
 
 def index(request):
     return render(request, "index.html")
@@ -16,10 +16,6 @@ class PersonageListView(ListView):
     allow_empty = False
     template_name = 'personages.html'
 
-    # def get_context_data(self, **kwargs):
-    #     context = super().get_context_data(**kwargs)
-    #     return context
-
 
 class ReleaseListView(ListView):
     model = Release
@@ -28,17 +24,23 @@ class ReleaseListView(ListView):
     template_name = 'releases.html'
 
 
+class GamerListView(ListView):
+    model = Gamer
+    template_name = 'gamers.html'
+
+
 class ReleaseDetailView(DetailView):
     model = Release
-    context_object_name = 'release'
     template_name = 'release_detail.html'
 
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        return context
+class GamerDetailView(DetailView):
+    model = Gamer
+    template_name = 'gamer_detail.html'
 
 
-# class ___APIView(viewsets.ModelViewSet):
-#     queryset = ___.objects.all()
-#     serializer_class = ___Serializer
+
+
+class ReleasAPIView(viewsets.ModelViewSet):
+    queryset = Release.objects.all()
+    serializer_class = ReleaseSerializer
