@@ -13,6 +13,7 @@ def index(request):
 class PersonageListView(ListView):
     model = Personage
     paginate_by = 10
+    allow_empty = False
     template_name = 'personages.html'
 
     # def get_context_data(self, **kwargs):
@@ -23,12 +24,19 @@ class PersonageListView(ListView):
 class ReleaseListView(ListView):
     model = Release
     paginate_by = 10
+    allow_empty = False
     template_name = 'releases.html'
 
 
-# class ___(DetailView):
-#     model = ___
-#     template_name = '___.html'
+class ReleaseDetailView(DetailView):
+    model = Release
+    context_object_name = 'release'
+    template_name = 'release_detail.html'
+
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        return context
 
 
 # class ___APIView(viewsets.ModelViewSet):

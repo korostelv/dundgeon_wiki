@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% block title %}{{object.title}}{% endblock %}
+
+{% block content %}
+
+<h1>Выпуск {{release.number}}. {{release.title}}</h1>
+
+  <h3>Игроки</h3>
+  <ul>
+    {% for gamer in release.gamers.all %}
+      <li>{{ gamer.name }}</li>
+    {% endfor %}
+  </ul>
+
+  <h3>Персонажи</h3>
+
+
+  <ul>
+    {% for personage in release.personages.all %}
+      <li>
+        {{personage.name}}
+
+<!--        <img src="{{ personage.image.url }}" alt="{{ personage.name }}" width="150"-->
+<!--             style="border-radius: 10px;" onerror="this.style.display='none'"><br>-->
+<!--        <strong>Описание:</strong> {{ personage.description }}<br>-->
+<!--        <strong>Характеристики:</strong>-->
+<!--        <ul>-->
+
+<!--          <li>Сила: {{ personage.power }}</li>-->
+<!--          <li>Ловкость: {{ personage.dexterity }}</li>-->
+<!--          <li>Выносливость: {{ personage.endurance }}</li>-->
+<!--          <li>Мудрость: {{ personage.wisdom }}</li>-->
+<!--          <li>Интеллект: {{ personage.intellect }}</li>-->
+<!--          <li>Харизма: {{ personage.charisma }}</li>-->
+<!--        </ul>-->
+
+      </li>
+    {% endfor %}
+  </ul>
+
+  <h3>Сюжетная линия</h3>
+  <p>{{ release.line }}</p>
+
+
+
+
+<h3>Видео</h3>
+{% if release.url %}
+  <iframe width="560" height="315"
+          src="https://www.youtube.com/embed/{{ release.url|slice:'17:' }}"
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen>
+  </iframe>
+{% else %}
+  <p>Видео не добавлено.</p>
+{% endif %}
+
+
+
+{% endblock %}
