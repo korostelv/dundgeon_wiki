@@ -1,0 +1,9 @@
+* {
+
+	font-family: "Roboto", serif;
+
+}
+
+.nav-pills li a:hover {
+	background-color: #0d6efd;
+}
