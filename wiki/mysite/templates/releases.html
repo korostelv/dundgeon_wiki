@@ -1,16 +1,16 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block title %}Выпуски ПЧК{% endblock %}
 
 {% block content %}
 
 
-<div class="container py-5">
-    <div class="row row-cols-4 g-4">  
+<div class="container">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
         {% for object in object_list.all %}
         <div class="col"> 
             <div class="card bg-dark" style="color:#ae7924">  
-                <img src="{{ object.image.url }}" class="card-img-top" alt="{{ object.title }}">
+                <img src="{{ object.image.url }}" class="card-img-top " alt="{{ object.title }}">
                 <div class="card-body text-center">
                     <a href="/releases/{{object.pk}}" class="card-title text-decoration-none">Выпуск {{object.number}}<br>{{object.title}}</a>
                 </div>

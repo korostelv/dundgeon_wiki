@@ -3,9 +3,11 @@
 	font-family: "Roboto", sans-serif;
 
 }
-body {
-    min-width: 320px;
-}
+/* html,body {
+    min-width: 320px ;
+    background-color: #788087;
+    height: 100%;
+} */
 
 img {
 	max-width: 100%;
@@ -44,17 +46,49 @@ img {
     border: 2px solid #a36209; 
     border-radius: 8px; 
 }
-
+/* ....................................... */
 .navbar-toggler:focus {
     outline: none !important;
     box-shadow: none !important;
 }
 
-footer {
-	height: 30px;
-}
-
 .card-title {
     color: #ae7924; 
 }
+/* ссылки */
+ .content a{
+
+    color: #442f20!important; 
+  }
+
+.content a:hover{
+    
+    color: #663f24!important; 
+  }
+  /*  ............................... */
+
+.content img {
+    width: auto !;
+    height: 300px;
+}
+
+
+
+/* Футер */
+/* footer {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-between !important;
+} */
+
+footer a {
+	height: 30px;
+    font-size: 30px !important;
+    color: #ae7924 !important;
+}
+
+footer a:hover {
+    color: #a36209 !important 
+}
+
 

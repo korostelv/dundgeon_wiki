@@ -21,6 +21,7 @@ class ReleaseListView(ListView):
     model = Release
     paginate_by = 12
     allow_empty = False
+    ordering = ['number']
     template_name = 'releases.html'
 
 
