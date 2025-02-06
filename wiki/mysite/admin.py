@@ -16,6 +16,7 @@ class PersonageAdmin(admin.ModelAdmin):
                     'display_image']
     list_filter = ['race', 'gamer']
     list_display_links = ['id', 'name']
+    list_per_page = 20
 
     def display_image(self, obj):
         return format_html('<img src="{}" width="35" height="50" />', obj.image.url)
@@ -28,6 +29,7 @@ class GamerAdmin(admin.ModelAdmin):
     list_display = ['id', 'name', 'display_personages', 'display_image']
     list_filter = ['name']
     list_display_links = ['name']
+    list_per_page = 10
 
     def display_image(self, obj):
         return format_html('<img src="{}" width="50" height="50" />', obj.image.url)
@@ -40,6 +42,7 @@ class ReleaseAdmin(admin.ModelAdmin):
     list_display = ['id', 'number', 'title','annotation', 'display_gamers', 'display_personages', 'line', 'url', 'display_image']
     list_display_links = ['id', 'number', 'title']
     list_filter = ['line']
+    list_per_page = 10
 
     def display_image(self, obj):
         return format_html('<img src="{}" width="100" height="50" />', obj.image.url)
