@@ -4,6 +4,11 @@ from django.db import models
 class Race(models.Model):
     name = models.CharField(max_length=20, blank=False, null=True, verbose_name='Раса')
 
+    class Meta:
+        verbose_name = "Раса"
+        verbose_name_plural = "Расы"
+
+
     def __str__(self):
         return self.name
 
@@ -22,6 +27,10 @@ class Personage(models.Model):
                               related_name='personages_list')
     image = models.ImageField(upload_to='personages', blank=True, null=True, verbose_name='Изображение персонажа')
 
+    class Meta:
+        verbose_name = "Персонаж"
+        verbose_name_plural = "Персонажи"
+
     def __str__(self):
         return self.name
 
@@ -30,6 +39,10 @@ class Gamer(models.Model):
     name = models.CharField(max_length=40, blank=False, verbose_name='Имя игрока')
     personages = models.ManyToManyField('Personage', blank=True, verbose_name='Персонажи', related_name='gamers')
     image = models.ImageField(upload_to='gamers', blank=True, null=True, verbose_name='Фото игрока')
+
+    class Meta:
+        verbose_name = "Игрок"
+        verbose_name_plural = "Игроки"
 
     def __str__(self):
         return self.name
@@ -42,6 +55,10 @@ class Gamer(models.Model):
 
 class Storyline(models.Model):
     line = models.CharField(max_length=50, blank=False, verbose_name='Сюжетная линия')
+
+    class Meta:
+        verbose_name = "Сюжетная линия"
+        verbose_name_plural = "Сюжетные линии"
 
     def __str__(self):
         return self.line
@@ -57,6 +74,10 @@ class Release(models.Model):
                              verbose_name='Сюжетная линия')
     url = models.URLField(max_length=150, blank=False, verbose_name='Ссылка')
     image = models.ImageField(upload_to='releases', blank=True, null=True, verbose_name='Афиша')
+
+    class Meta:
+        verbose_name = "Выпуск"
+        verbose_name_plural = "Выпуски"
 
     def __str__(self):
         return f'{self.number}. {self.title}'
