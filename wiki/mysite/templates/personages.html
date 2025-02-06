@@ -26,7 +26,7 @@
 <!--Блок пагинации-->
      {% if page_obj.has_other_pages %}
         <nav aria-label="Page navigation example">
-            <ul class="pagination pagination-lg justify-content-center pb-5">
+            <ul class="pagination pagination-lg justify-content-center pb-5 mt-5">
                 {% if page_obj.has_previous %}
                     <li  class="page-item">
                         <a class="page-link  bg-dark" style="color: #ae7924; border-color: #ae7924;"   href="?page={{ page_obj.previous_page_number }}" aria-label="Previous" ><span aria-hidden="true">&laquo;</span></a>

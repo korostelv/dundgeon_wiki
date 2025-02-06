@@ -1,7 +1,7 @@
 from django.urls import path
 from rest_framework import routers
 from .views import (PersonageListView, ReleaseListView, ReleaseDetailView, GamerListView,
-                    GamerDetailView, PersonageDetailView, PersonageListFilterView,
+                    GamerDetailView, PersonageDetailView, PersonageListFilterView, ReleaseListFilterView,
                     ReleasAPIView, RacesAPIView, PersonagesAPIView, GamersAPIView, StorylinesAPIView)
 
 app_name = 'mysite'
@@ -21,5 +21,6 @@ urlpatterns = [
     path('gamers/<int:pk>/', GamerDetailView.as_view(), name='gamer_detail'),
     path('personages/<int:pk>/', PersonageDetailView.as_view(), name='personage_detail'),
     path('personages_filter/<int:pk>/', PersonageListFilterView.as_view(), name='personages_filter'),
+    path('releases_filter/<int:pk>/', ReleaseListFilterView.as_view(), name='releases_filter'),
 ]
 urlpatterns += router.urls

@@ -71,6 +71,33 @@ class PersonageListFilterView(ListView):
         return context
 
 
+class ReleaseListFilterView(ListView):
+    model = Release
+    paginate_by = 15
+    allow_empty = False
+    template_name = 'releases_filter.html'
+
+    def get_queryset(self):
+        line_id = self.kwargs.get('pk')
+        return Release.objects.filter(line=line_id)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        line_id = self.kwargs.get('pk')
+        context["line"] = Storyline.objects.get(pk=line_id).line
+        return context
+
+
+
+
+
+
+
+
+
+
+
+
 # API
 class ReleasAPIView(viewsets.ModelViewSet):
     queryset = Release.objects.all()

@@ -50,6 +50,7 @@ class Storyline(models.Model):
 class Release(models.Model):
     number = models.IntegerField(blank=False, verbose_name='Номер выпуска')
     title = models.CharField(max_length=50, blank=False, verbose_name='Название выпуска')
+    annotation = models.TextField(blank=True, verbose_name='Аннотация')
     gamers = models.ManyToManyField('Gamer', verbose_name='Игроки')
     personages = models.ManyToManyField('Personage', verbose_name='Персонажи')
     line = models.ForeignKey('Storyline', blank=True, null=True, on_delete=models.CASCADE,

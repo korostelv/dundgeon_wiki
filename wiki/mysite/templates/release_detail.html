@@ -12,9 +12,13 @@
     </div>
     <hr>
     <div class="col">
-      <h3> Cюжетная линия: <a class="text-decoration-none" href="">{{object.line}}</a></h3>
+      <h3> Cюжетная линия: <a class="text-decoration-none" href="/releases_filter/{{object.line.pk}}">{{object.line}}</a></h3>
     </div>
     <hr>
+    <!-- <div class="col">
+      {{object.annotation|linebreaks}}
+    </div>
+    <hr> -->
     <div class="row row-cols-2">
       <div class="col col-12 col-md-4 ">
         <h3>Персонажи: </h3>
