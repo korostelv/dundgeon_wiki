@@ -69,17 +69,9 @@ img {
 
 .content img {
     width: auto;
-    height: 200px !important;
+    height: 290px !important;
 }
 
-
-
-/* Футер */
-/* footer {
-    display: flex !important;
-    flex-direction: row !important;
-    justify-content: space-between !important;
-} */
 
 footer a {
 	height: 30px;
