@@ -16,17 +16,17 @@
     </div>
     <hr>
     <div class="row row-cols-2">
-      <div class="col">
+      <div class="col col-12 col-md-4 ">
         <h3>Персонажи: </h3>
       </div>
-      <div class="col">  
+      <div class="colcol-12 col-md-8 ">  
         <div class="row row-cols-sm-2 row-cols-1  mx-5">
           {% for personage in object.personages.all%}
             <div class="col">
               <a class="text-decoration-none" href='/personages/{{ personage.pk }}' >{{ personage.name }}</a>
             </div>
             <div class="col">
-              играет <a class="text-decoration-none"  href='/gamers/{{personage.gamer.pk}}' >{{personage.gamer.name}}</a>
+              - играет <a class="text-decoration-none"  href='/gamers/{{personage.gamer.pk}}' >{{personage.gamer.name}}</a>
             </div>
           {% endfor %}
         </div>
@@ -45,13 +45,14 @@
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               allowfullscreen>
       </iframe>
-    {% else %}
+    {% else %} 
       <p>Видео не добавлено.</p>
-    </div>
     {% endif %}  
+  </div>
   <hr>
 
 
+  
   </div>
 </div>
 

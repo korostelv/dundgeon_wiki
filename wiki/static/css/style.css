@@ -68,8 +68,8 @@ img {
   /*  ............................... */
 
 .content img {
-    width: auto !;
-    height: 300px;
+    width: auto;
+    height: 200px !important;
 }
 
 
