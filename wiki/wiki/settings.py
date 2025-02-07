@@ -15,7 +15,6 @@ SECRET_KEY = 'django-insecure-t!5)z#(8#!)48uu3ryian!3qzg35g=sb8m#^8wd+plmn)rutc!
 DEBUG = True
 
 ALLOWED_HOSTS = []
-INTERNAL_IPS = ["127.0.0.1"]
 
 
 # Application definition
@@ -28,8 +27,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'django_extensions',
-    "debug_toolbar",
     'mysite.apps.MysiteConfig',
 ]
 
@@ -41,7 +38,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    "debug_toolbar.middleware.DebugToolbarMiddleware",
 ]
 
 ROOT_URLCONF = 'wiki.urls'
@@ -136,6 +132,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE': 10
+
 }
 
 GRAPH_MODELS = {

@@ -13,6 +13,7 @@ router.register('api/personages', PersonagesAPIView)
 router.register('api/gamers', GamersAPIView)
 router.register('api/storylines', StorylinesAPIView)
 
+
 urlpatterns = [
     path("personages/", PersonageListView.as_view(), name="personages"),
     path("", ReleaseListView.as_view(), name="releases"),

@@ -9,8 +9,8 @@
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 g-4">
             {% for object in object_list %}
             <div class="col"> 
-                <div class="card bg-dark" style="color:#ae7924">  
-                    <img src="{{ object.image.url }}" class="card-img-top " alt="{{ object.name }}">
+                <div class="card bg-dark h-100 d-flex flex-column" style="color:#ae7924">
+                    <img src="{{ object.image.url }}" class="card-img-top img-fluid " alt="{{ object.name }}">
                     <div class="card-body text-center">
                         <a href="/personages/{{object.pk}}" class="card-title text-decoration-none">{{object}}</a>
                     </div>

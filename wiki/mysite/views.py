@@ -1,6 +1,7 @@
 from django.views.generic import DetailView
 from django.views.generic.list import ListView
 
+
 from rest_framework import viewsets
 from .serializers import ReleaseSerializer, RaceSerializer, PersonageSerializer, GamerSerializer, StorylineSerializer
 from .models import Personage, Release, Gamer, Race, Storyline
@@ -122,3 +123,5 @@ class GamersAPIView(viewsets.ModelViewSet):
 class StorylinesAPIView(viewsets.ModelViewSet):
     queryset = Storyline.objects.all()
     serializer_class = StorylineSerializer
+
+

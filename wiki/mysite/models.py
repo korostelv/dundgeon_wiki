@@ -16,7 +16,7 @@ class Race(models.Model):
 class Personage(models.Model):
     name = models.CharField(max_length=30, blank=False, null=True, verbose_name='Имя персонажа')
     race = models.ForeignKey('Race', blank=True, null=True, on_delete=models.CASCADE, verbose_name='Раса')
-    description = models.TextField(blank=False, null=True, verbose_name='Описание')
+    description = models.TextField(blank=True, null=True, verbose_name='Описание')
     power = models.IntegerField(blank=False, null=True, verbose_name='Сила')
     dexterity = models.IntegerField(blank=False, null=True, verbose_name='Ловкость')
     endurance = models.IntegerField(blank=False, null=True, verbose_name='Выносливость')
@@ -72,7 +72,7 @@ class Release(models.Model):
     personages = models.ManyToManyField('Personage', verbose_name='Персонажи')
     line = models.ForeignKey('Storyline', blank=True, null=True, on_delete=models.CASCADE,
                              verbose_name='Сюжетная линия')
-    url = models.URLField(max_length=150, blank=False, verbose_name='Ссылка')
+    url = models.URLField(max_length=150, blank=True, verbose_name='Ссылка')
     image = models.ImageField(upload_to='releases', blank=True, null=True, verbose_name='Афиша')
 
     class Meta:
