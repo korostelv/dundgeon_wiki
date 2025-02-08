@@ -2,7 +2,8 @@ from django.urls import path
 from rest_framework import routers
 from .views import (PersonageListView, ReleaseListView, ReleaseDetailView, GamerListView,
                     GamerDetailView, PersonageDetailView, PersonageListFilterView, ReleaseListFilterView,
-                    ReleasAPIView, RacesAPIView, PersonagesAPIView, GamersAPIView, StorylinesAPIView)
+                    ReleasAPIView, RacesAPIView, PersonagesAPIView, GamersAPIView, StorylinesAPIView,)
+
 
 app_name = 'mysite'
 
