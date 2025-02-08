@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}{{object.name}}{% endblock %}
+
+{% block content %}
+
+<div class="container content">
+    <div class="row row-cols-1">
+        <div class="col">
+            <h1>{{object.name}}</h1>
+        </div>
+        <hr>
+        <div class="col">
+            <h4>Раса: <a class="text-decoration-none"  href="/personages_filter/{{object.race.pk}}">{{object.race}}</a></h4>
+        </div>
+        <hr>
+        <div class="col">
+            <p>{{object.description|linebreaks}}</p>
+        </div>
+        <hr>
+        <div class="col">
+            <div class="row row-cols-sm-2 row-cols-1  mx-5">
+                <div class="col">
+                    <img src="{{ object.image.url }}" class="" alt="{{ object.name }}">
+                </div>
+                <div class="col ">
+                    <div class="text-center"><h4>Характеристики: </h4></div>
+                    <table class="table table-dark">
+                        <tr>                 
+                            <td>Сила</td>
+                            <td>{{object.power}}</td>         
+                        </tr>
+                        <tr>                 
+                            <td>Ловкость</td>
+                            <td>{{object.dexterity}}</td>         
+                        </tr>
+                        <tr>                 
+                            <td>Выносливость</td>
+                            <td>{{object.endurance}}</td>         
+                        </tr>
+                        <tr>                 
+                            <td>Мудрость</td>
+                            <td>{{object.wisdom}}</td>         
+                        </tr>
+                        <tr>                 
+                            <td>Интеллект</td>
+                            <td>{{object.intellect}}</td>         
+                        </tr>
+                        <tr>                 
+                            <td>Харизма</td>
+                            <td>{{object.charisma}}</td>         
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="col">
+            <h4>Играет: <a class="text-decoration-none" href="/gamers/{{ object.gamer.pk }}">{{object.gamer}}</a></h4>
+        </div>
+    </div>
+    <hr>
+
+    <div class="col">
+        <div class="row row-cols-sm-2 row-cols-1">
+            <div class="col">
+                <h4> Присутствует в выпусках: </h4>
+            </div>
+            <div class="col">
+
+                {% for release in releases %}
+                <div class="col">
+                    <a class="text-decoration-none" href="/releases/{{release.pk}}">{{release.number}}. {{release.title}}</a>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <hr>
+</div>
+
+
+{% endblock %}

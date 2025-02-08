@@ -4,6 +4,54 @@
 
 {% block content %}
 
-{{object}}
+<div class="container content">
+    <div class="row row-cols-1">
+        <div class="col">
+            <h1>{{object.name}}</h1>
+        </div>
+        <hr>
+        <div class="col">
+            <div class="row row-cols-sm-2 row-cols-1  mx-5">
+                <div class="col">
+                    <img src="{{ object.image.url }}" class="" alt="{{ object.name }}">
+                </div>
+                <div class="col text-center ">
+                    <div class="">
+                            <h4>Играет за персонажей: </h4>
+                    </div>
+                    <div class="row row-cols-1  mx-5">
+                        {% for personage in object.personages.all %}
+                            <div class="col">
+                                <a class="text-decoration-none text-center " href='/personages/{{ personage.pk }}' >{{personage.name}}</a>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+    </div>
+    
+    </div>
+    <hr>
+
+    <div class="col">
+        <div class="row row-cols-1 row-cols-sm-2">
+            <div class="col col-12 col-md-4">
+                <h4>Присутствует в выпусках:</h4>
+            </div>
+            <div class="col col-12 col-md-8 ">
+                <div class="row row-cols-1 row-cols-sm-2">
+                    {% for release in releases %}
+                    <div class="col">
+                        <a class="text-decoration-none" href="/releases/{{release.pk}}">
+                            {{release.number}}. {{release.title}}
+                        </a>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+</div>
 
 {% endblock %}

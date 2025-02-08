@@ -4,60 +4,60 @@
 
 {% block content %}
 
-<h1>Выпуск {{object.number}}. {{object.title}}</h1>
+<div class="container content">
+  <div class="row row-cols-1">
 
-  <h3>Игроки</h3>
-  <ul>
-    {% for gamer in release.gamers.all %}
-      <li>{{ gamer.name }}</li>
-    {% endfor %}
-  </ul>
-
-  <h3>Персонажи</h3>
-
-
-  <ul>
-    {% for personage in release.personages.all %}
-      <li>
-        {{personage.name}}
-
-<!--        <img src="{{ personage.image.url }}" alt="{{ personage.name }}" width="150"-->
-<!--             style="border-radius: 10px;" onerror="this.style.display='none'"><br>-->
-<!--        <strong>Описание:</strong> {{ personage.description }}<br>-->
-<!--        <strong>Характеристики:</strong>-->
-<!--        <ul>-->
-
-<!--          <li>Сила: {{ personage.power }}</li>-->
-<!--          <li>Ловкость: {{ personage.dexterity }}</li>-->
-<!--          <li>Выносливость: {{ personage.endurance }}</li>-->
-<!--          <li>Мудрость: {{ personage.wisdom }}</li>-->
-<!--          <li>Интеллект: {{ personage.intellect }}</li>-->
-<!--          <li>Харизма: {{ personage.charisma }}</li>-->
-<!--        </ul>-->
-
-      </li>
-    {% endfor %}
-  </ul>
-
-  <h3>Сюжетная линия</h3>
-  <p>{{ release.line }}</p>
-
-
-
-
-<h3>Видео</h3>
-{% if release.url %}
-  <iframe width="560" height="315"
-          src="https://www.youtube.com/embed/{{ release.url|slice:'17:' }}"
-          title="YouTube video player"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowfullscreen>
-  </iframe>
-{% else %}
-  <p>Видео не добавлено.</p>
-{% endif %}
+    <div class="col">
+      <h1>Выпуск {{object.number}}. {{object.title}}</h1>
+    </div>
+    <hr>
+    <div class="col">
+      <h3> Cюжетная линия: <a class="text-decoration-none" href="/releases_filter/{{object.line.pk}}">{{object.line}}</a></h3>
+    </div>
+    <hr>
+    <!-- <div class="col">
+      {{object.annotation|linebreaks}}
+    </div>
+    <hr> -->
+    <div class="row row-cols-2">
+      <div class="col col-12 col-md-4 ">
+        <h3>Персонажи: </h3>
+      </div>
+      <div class="colcol-12 col-md-8 ">  
+        <div class="row row-cols-sm-2 row-cols-1  mx-5">
+          {% for personage in object.personages.all%}
+            <div class="col">
+              <a class="text-decoration-none" href='/personages/{{ personage.pk }}' >{{ personage.name }}</a>
+            </div>
+            <div class="col">
+              - играет <a class="text-decoration-none"  href='/gamers/{{personage.gamer.pk}}' >{{personage.gamer.name}}</a>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+    <hr>
+    <div class="col">
+      <h3>Видео</h3>
+    </div>
+    {% if release.url %}
+    <div class="col">
+      <iframe width="560" height="315"
+              src="https://www.youtube.com/embed/{{ release.url|slice:'17:' }}"
+              title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen>
+      </iframe>
+    {% else %} 
+      <p>Видео не добавлено.</p>
+    {% endif %}  
+  </div>
+  <hr>
 
 
+  
+  </div>
+</div>
 
 {% endblock %}

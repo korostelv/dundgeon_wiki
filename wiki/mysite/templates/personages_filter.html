@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Раса: {{race}}{% endblock %}
+
+{% block content %}
+
+
+
+<div class="container">
+    <div class="col">
+        <h2> Персонажи расы: {{race}}</h2>
+    </div>
+    <hr>
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 g-4">
+        {% for object in object_list %}
+        <div class="col"> 
+            <div class="card bg-dark" style="color:#ae7924">  
+                <img src="{{ object.image.url }}" class="card-img-top " alt="{{ object.name }}">
+                <div class="card-body text-center">
+                    <a href="/personages/{{object.pk}}" class="card-title text-decoration-none">{{object}}</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% for object in personages %}
+{{personages}}
+
+{% endfor %}
+
+<!--Блок пагинации-->
+ {% if page_obj.has_other_pages %}
+    <nav aria-label="Page navigation example">
+        <ul class="pagination pagination-lg justify-content-center pb-5 mt-5">
+            {% if page_obj.has_previous %}
+                <li  class="page-item">
+                    <a class="page-link  bg-dark" style="color: #ae7924; border-color: #ae7924;"   href="?page={{ page_obj.previous_page_number }}" aria-label="Previous" ><span aria-hidden="true">&laquo;</span></a>
+                </li>
+            {% endif %}
+
+            {% for p in page_obj.paginator.page_range %}
+                {% if page_obj.number == p %}
+                    <li class="page-link active link-dark" style="background-color: #ae7924; border-color: #ae7924;" > {{ p }}</li>
+                {% elif p >= page_obj.number|add:-2 and p <= page_obj.number|add:2  %}
+                    <li class="page-num">
+                        <a class="page-link  bg-dark" style="color: #ae7924; border-color: #ae7924;" href="?page={{ p }}" >{{ p }} </a>
+                    </li>
+                {% endif %}
+            {% endfor %}
+
+            {% if page_obj.has_next %}
+                <li class="page-item">
+                    <a class="page-link bg-dark" style="color: #ae7924; border-color: #ae7924;" href="?page={{ page_obj.next_page_number }}" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
+                </li>
+            {% endif %}
+        </ul>
+    </nav>
+{% endif %}
+
+{% endblock %}

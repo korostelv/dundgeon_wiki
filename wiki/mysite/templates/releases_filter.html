@@ -1,19 +1,22 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title %}Участники шоу{% endblock %}
+{% block title %} Сюжет: {{line}} {% endblock %}
 
 {% block content %}
 
 
-
-<div class="container py-5">
-    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 g-4">
-        {% for object in object_list %}
-        <div class="col">
-            <div class="card bg-dark h-100 d-flex flex-column" style="color:#ae7924">
-                <img src="{{ object.image.url }}" class="card-img-top img-fluid" alt="{{ object.title }}" style="height: 350px; object-fit: cover;">
-                <div class="card-body text-center d-flex flex-column justify-content-between">
-                    <a href="/gamers/{{object.pk}}" class="card-title text-decoration-none">{{object.name}}</a>
+<div class="container">
+    <div class="col">
+        <h2> Выпуски сюжетной линии: {{line}}</h2>
+    </div>
+    <hr>
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
+        {% for object in object_list.all %}
+        <div class="col"> 
+            <div class="card bg-dark" style="color:#ae7924">  
+                <img src="{{ object.image.url }}" class="card-img-top " alt="{{ object.title }}">
+                <div class="card-body text-center">
+                    <a href="/releases/{{object.pk}}" class="card-title text-decoration-none">Выпуск {{object.number}}<br>{{object.title}}</a>
                 </div>
             </div>
         </div>
@@ -22,10 +25,11 @@
 </div>
 
 
+
 <!--Блок пагинации-->
      {% if page_obj.has_other_pages %}
         <nav aria-label="Page navigation example">
-            <ul class="pagination pagination-lg justify-content-center pb-5">
+            <ul class="pagination pagination-lg justify-content-center pb-5 mt-5">
                 {% if page_obj.has_previous %}
                     <li  class="page-item">
                         <a class="page-link  bg-dark" style="color: #ae7924; border-color: #ae7924;"   href="?page={{ page_obj.previous_page_number }}" aria-label="Previous" ><span aria-hidden="true">&laquo;</span></a>
