@@ -5,6 +5,7 @@ from django.views.generic.list import ListView
 from rest_framework import viewsets
 from .serializers import ReleaseSerializer, RaceSerializer, PersonageSerializer, GamerSerializer, StorylineSerializer
 from .models import Personage, Release, Gamer, Race, Storyline
+from .permissions import IsAdminOrReadOnly
 
 
 class PersonageListView(ListView):
@@ -89,39 +90,34 @@ class ReleaseListFilterView(ListView):
         return context
 
 
-
-
-
-
-
-
-
-
-
-
 # API
 class ReleasAPIView(viewsets.ModelViewSet):
     queryset = Release.objects.all()
     serializer_class = ReleaseSerializer
+    permission_classes = (IsAdminOrReadOnly,)
 
 
 class RacesAPIView(viewsets.ModelViewSet):
     queryset = Race.objects.all()
     serializer_class = RaceSerializer
+    permission_classes = (IsAdminOrReadOnly,)
 
 
 class PersonagesAPIView(viewsets.ModelViewSet):
     queryset = Personage.objects.all()
     serializer_class = PersonageSerializer
+    permission_classes = (IsAdminOrReadOnly,)
 
 
 class GamersAPIView(viewsets.ModelViewSet):
     queryset = Gamer.objects.all()
     serializer_class = GamerSerializer
+    permission_classes = (IsAdminOrReadOnly,)
 
 
 class StorylinesAPIView(viewsets.ModelViewSet):
     queryset = Storyline.objects.all()
     serializer_class = StorylineSerializer
+    permission_classes = (IsAdminOrReadOnly,)
 
 
