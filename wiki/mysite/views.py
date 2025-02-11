@@ -1,5 +1,6 @@
 from django.views.generic import DetailView
 from django.views.generic.list import ListView
+from django.db.models import Q
 
 
 from rest_framework import viewsets
@@ -71,6 +72,30 @@ class PersonageListFilterView(ListView):
         race_id = self.kwargs.get('pk')
         context["race"] = Race.objects.get(pk=race_id).name
         return context
+
+
+class PersonageListSearchView(ListView):
+    model = Personage
+    paginate_by = 15
+    template_name = 'personages.html'
+
+    def get_queryset(self):
+        query = self.request.GET.get('q')
+        if query:
+            return Personage.objects.filter(Q(name__icontains=query))
+        return Personage.objects.all()
+
+
+class GamerListSearchView(ListView):
+    model = Gamer
+    paginate_by = 15
+    template_name = 'gamers.html'
+
+    def get_queryset(self):
+        query = self.request.GET.get('q')
+        if query:
+            return Gamer.objects.filter(Q(name__icontains=query))
+        return Gamer.objects.all()
 
 
 class ReleaseListFilterView(ListView):
