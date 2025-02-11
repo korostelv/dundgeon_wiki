@@ -23,6 +23,31 @@ class ReleaseListView(ListView):
     ordering = ['number']
     template_name = 'releases.html'
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["storyline"] = Storyline.objects.all()
+        return context
+
+
+class ReleaseStoryListView(ListView):
+    model = Release
+    paginate_by = 12
+    ordering = ['number']
+    template_name = 'releases_filter.html'
+
+    def get_queryset(self):
+        query = self.request.GET.get('q')
+        if query:
+            return Release.objects.filter(line__pk=query)
+        return Release.objects.all()
+
+    def get_context_data(self, **kwargs):
+        query = self.request.GET.get('q')
+        context = super().get_context_data(**kwargs)
+        # context["storyline"] = Storyline.objects.all()
+        context['line'] = Storyline.objects.get(pk=query).line
+        return context
+
 
 class GamerListView(ListView):
     model = Gamer

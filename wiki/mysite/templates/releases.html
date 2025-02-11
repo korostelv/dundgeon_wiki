@@ -6,6 +6,22 @@
 
 
     <div class="container">
+        <div class="col col-12 col-md-3">
+            <h4>Выбор сюжетной линии</h4>
+            <form action="releases_filter" method="get" class="" >
+                <select name="q"  class="form-select form-select mb-1">
+                    {% for line in storyline %}
+                        <option value={{line.id}}>{{line.line}}</option>
+                    {%endfor%}
+                </select>
+               <div class="col-12">
+                    <button type="submit"  class="btn btn-dark">Выбрать</button>
+                 </div>
+            </form>
+        </div>
+        <hr>
+
+
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
             {% for object in object_list.all %}
             <div class="col"> 
