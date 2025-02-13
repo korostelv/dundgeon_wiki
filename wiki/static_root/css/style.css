@@ -1,0 +1,86 @@
+* {
+
+	font-family: "Roboto", sans-serif;
+
+}
+/* html,body {
+    min-width: 320px ;
+    background-color: #788087;
+    height: 100%;
+} */
+
+img {
+	max-width: 100%;
+	height: auto;
+}
+
+/* меню навбара */
+#navbarNav a {
+	color: #ae7924;
+	
+}
+
+#navbarNav a:hover{
+	color: #a36209;
+}
+
+
+	
+/*  Кнопка бургера */
+.custom-icon {
+    font-size: 1.5rem; 
+    color: #ae7924; 
+  }
+
+.custom-icon:hover {
+    font-size: 1.5rem; 
+    color: #a36209; 
+  }
+
+#burger {
+    border: 2px solid #ae7924; 
+    border-radius: 8px; 
+}
+
+#burger:hover {
+    border: 2px solid #a36209; 
+    border-radius: 8px; 
+}
+/* ....................................... */
+.navbar-toggler:focus {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.card-title {
+    color: #ae7924; 
+}
+/* ссылки */
+ .content a{
+
+    color: #442f20!important; 
+  }
+
+.content a:hover{
+    
+    color: #663f24!important; 
+  }
+  /*  ............................... */
+
+.content img {
+    width: auto;
+    height: 290px !important;
+}
+
+
+footer a {
+	height: 30px;
+    font-size: 30px !important;
+    color: #ae7924 !important;
+}
+
+footer a:hover {
+    color: #a36209 !important 
+}
+
+
