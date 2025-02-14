@@ -178,6 +178,9 @@ class StorylinesAPIView(viewsets.ModelViewSet):
 #page 404
 def page_not_found(request, exception):
     return render(request, 'mysite/404.html', {'path': request.path}, status=404)
-    print('вот: '+request())
+
+
+def about(request):
+    return render(request, 'about.html')
 
 

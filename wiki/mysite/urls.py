@@ -1,8 +1,9 @@
 from django.urls import path
 from rest_framework import routers
 from .views import (PersonageListView, ReleaseListView, ReleaseDetailView, GamerListView,
-                    GamerDetailView, PersonageDetailView, PersonageListFilterView, ReleaseListFilterView, PersonageListSearchView, GamerListSearchView, ReleaseStoryListView,
-                    ReleasAPIView, RacesAPIView, PersonagesAPIView, GamersAPIView, StorylinesAPIView,)
+                    GamerDetailView, PersonageDetailView, PersonageListFilterView, ReleaseListFilterView,
+                    PersonageListSearchView, GamerListSearchView, ReleaseStoryListView,
+                    ReleasAPIView, RacesAPIView, PersonagesAPIView, GamersAPIView, StorylinesAPIView, about, )
 
 
 app_name = 'mysite'
@@ -27,6 +28,7 @@ urlpatterns = [
     path('gamers/search', GamerListSearchView.as_view(), name='gamers_search'),
     path('releases_filter/<int:pk>/', ReleaseListFilterView.as_view(), name='releases_filter'),
     path('releases_filter/', ReleaseStoryListView.as_view(), name='releases_story'),
+    path('about', about, name='about'),
 ]
 urlpatterns += router.urls
 
