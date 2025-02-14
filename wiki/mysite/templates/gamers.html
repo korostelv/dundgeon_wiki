@@ -13,7 +13,7 @@
                 {% for object in object_list %}
                     <div class="col">
                         <div class="card bg-dark h-100 d-flex flex-column" style="color:#ae7924">
-                            <img src="{{ object.image.url }}" class="card-img-top img-fluid" alt="{{ object.title }}" style="height: 350px; object-fit: cover;">
+                            <a href="/gamers/{{object.pk}}" ><img src="{{ object.image.url }}" class="card-img-top img-fluid" alt="{{ object.title }}" style="height: 350px; object-fit: cover;"></a>
                             <div class="card-body text-center d-flex flex-column justify-content-between">
                                 <a href="/gamers/{{object.pk}}" class="card-title text-decoration-none">{{object.name}}</a>
                             </div>
