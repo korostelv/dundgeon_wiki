@@ -1,6 +1,10 @@
+from http.cookiejar import request_path
+
+from django.template.context_processors import request
 from django.views.generic import DetailView
 from django.views.generic.list import ListView
 from django.db.models import Q
+from django.shortcuts import render
 
 
 from rest_framework import viewsets
@@ -169,5 +173,11 @@ class StorylinesAPIView(viewsets.ModelViewSet):
     queryset = Storyline.objects.all()
     serializer_class = StorylineSerializer
     permission_classes = (IsAdminOrReadOnly,)
+
+
+#page 404
+def page_not_found(request, exception):
+    return render(request, 'mysite/404.html', {'path': request.path}, status=404)
+    print('вот: '+request())
 
 

@@ -29,3 +29,5 @@ urlpatterns = [
     path('releases_filter/', ReleaseStoryListView.as_view(), name='releases_story'),
 ]
 urlpatterns += router.urls
+
+handler404 = 'mysite.views.page_not_found'
