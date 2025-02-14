@@ -1,6 +1,5 @@
-from http.cookiejar import request_path
 
-from django.template.context_processors import request
+
 from django.views.generic import DetailView
 from django.views.generic.list import ListView
 from django.db.models import Q
@@ -179,7 +178,7 @@ class StorylinesAPIView(viewsets.ModelViewSet):
 def page_not_found(request, exception):
     return render(request, 'mysite/404.html', {'path': request.path}, status=404)
 
-
+#about
 def about(request):
     return render(request, 'about.html')
 
