@@ -23,7 +23,7 @@ class ReleaseListView(ListView):
     model = Release
     paginate_by = 12
     allow_empty = False
-    ordering = ['number']
+    ordering = ['number','title']
     template_name = 'releases.html'
 
     def get_context_data(self, **kwargs):
@@ -35,7 +35,7 @@ class ReleaseListView(ListView):
 class ReleaseStoryListView(ListView):
     model = Release
     paginate_by = 12
-    ordering = ['number']
+    ordering = ['number', 'title']
     template_name = 'releases_filter.html'
 
     def get_queryset(self):
