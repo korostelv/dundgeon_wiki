@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 
 class Race(models.Model):
@@ -7,7 +8,6 @@ class Race(models.Model):
     class Meta:
         verbose_name = "Раса"
         verbose_name_plural = "Расы"
-
 
     def __str__(self):
         return self.name
@@ -78,6 +78,9 @@ class Release(models.Model):
     class Meta:
         verbose_name = "Выпуск"
         verbose_name_plural = "Выпуски"
+
+    def get_absolute_url(self):
+        return reverse('mysite:release_detail',kwargs={'pk': self.pk})
 
     def __str__(self):
         return f'{self.number}. {self.title}'

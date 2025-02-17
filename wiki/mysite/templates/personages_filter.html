@@ -15,7 +15,7 @@
         {% for object in object_list %}
         <div class="col"> 
             <div class="card bg-dark" style="color:#ae7924">  
-                <img src="{{ object.image.url }}" class="card-img-top " alt="{{ object.name }}">
+                <a href="/personages/{{object.pk}}" ><img src="{{ object.image.url }}" class="card-img-top " alt="{{ object.name }}"></a>
                 <div class="card-body text-center">
                     <a href="/personages/{{object.pk}}" class="card-title text-decoration-none">{{object}}</a>
                 </div>

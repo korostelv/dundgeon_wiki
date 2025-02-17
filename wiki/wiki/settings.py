@@ -31,6 +31,8 @@ INSTALLED_APPS = [
     'mysite.apps.MysiteConfig',
 ]
 
+
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
