@@ -61,7 +61,7 @@ class StorylineAdmin(admin.ModelAdmin):
 
 class PictureAdmin (admin.ModelAdmin):
     model = Picture
-    list_display = ['id', 'personage','release', 'title', 'image' ]
+    list_display = ['id', 'personage','release', 'title', 'image','in_release' ]
     list_filter = ['personage', 'release']
     list_per_page = 30
 
