@@ -8,7 +8,7 @@ from django.shortcuts import render
 
 from rest_framework import viewsets
 from .serializers import ReleaseSerializer, RaceSerializer, PersonageSerializer, GamerSerializer, StorylineSerializer
-from .models import Personage, Release, Gamer, Race, Storyline
+from .models import Personage, Release, Gamer, Race, Storyline, Picture
 from .permissions import IsAdminOrReadOnly
 
 
@@ -82,6 +82,7 @@ class PersonageDetailView(DetailView):
         context = super().get_context_data(**kwargs)
         personage_id = self.kwargs.get('pk')
         context["releases"] = Release.objects.filter(personages__pk=personage_id).order_by('number')
+        context["pictures"] = Picture.objects.filter(personage__pk=personage_id)
         return context
 
 

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Race, Personage, Gamer, Release, Storyline
+from .models import Race, Personage, Gamer, Release, Storyline, Picture
 from django.utils.html import format_html
 
 
@@ -59,8 +59,16 @@ class StorylineAdmin(admin.ModelAdmin):
     list_display_links = ['id', 'line']
 
 
+class PictureAdmin (admin.ModelAdmin):
+    model = Picture
+    list_display = ['id', 'personage','release', 'title', 'image' ]
+    list_filter = ['personage', 'release']
+    list_per_page = 30
+
+
 admin.site.register(Race, RaceAdmin)
 admin.site.register(Personage, PersonageAdmin)
 admin.site.register(Gamer, GamerAdmin)
 admin.site.register(Release, ReleaseAdmin)
 admin.site.register(Storyline, StorylineAdmin)
+admin.site.register(Picture, PictureAdmin)

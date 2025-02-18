@@ -1,0 +1,48 @@
+
+    {% if pictures %}
+    <h4> Галерея </h4>
+
+        <div id="carouselExampleCaptions" class="carousel gallery slide carousel-dark" data-bs-ride="carousel">
+
+            <div class="carousel-indicators">
+                {% for p in pictures %}
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="{{ forloop.counter0 }}" {% if forloop.first %}class="active" aria-current="true"{% endif %} aria-label="Slide {{ forloop.counter }}"></button>
+                {% endfor %}
+            </div>
+
+
+            <div class="carousel-inner" >
+                {% for p in pictures %}
+                    <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                        {% if p.image %}
+                            <img src="{{p.image.url}}" class="d-block w-auto mx-auto"  alt="{{p.personage.name|default:'Изображение карусели'}}">
+                        {% endif %}
+                        {%if p.title%}
+                            <div class="carousel-caption d-none d-md-block">
+                                <p>{{p.title}}</p>
+                            </div>
+                        {%endif%}
+
+                    </div>
+
+                {% endfor %}
+            </div>
+
+            <!-- <div class="carousel-indicators">
+                {% for p in pictures %}
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="{{ forloop.counter0 }}" {% if forloop.first %}class="active" aria-current="true"{% endif %} aria-label="Slide {{ forloop.counter }}"></button>
+                {% endfor %}
+            </div> -->
+
+
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    <hr>
+  {%endif%}

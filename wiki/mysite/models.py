@@ -93,3 +93,26 @@ class Release(models.Model):
 
     display_gamers.short_description = 'Игроки'
     display_personages.short_description = 'Персонажи'
+
+
+
+def picture_upload_to(instance, filename):
+    if instance.personage is not None and instance.personage.name:
+        return f'gallery/{instance.personage.name}/{filename}'
+    elif instance.release is not None and instance.release.title:
+        return f'gallery/{instance.release.title}/{filename}'
+    return f'gallery/unknown/{filename}'
+
+
+class Picture(models.Model):
+    personage = models.ForeignKey('Personage',  blank=True,null=True, on_delete=models.CASCADE,verbose_name='Персонаж' )
+    release = models.ForeignKey('Release',  blank=False,null=True, on_delete=models.CASCADE,verbose_name='Выпуск' )
+    image = models.ImageField(upload_to=picture_upload_to, blank=False, null=True, verbose_name='Рисунок')
+    title = models.CharField(max_length=50, blank=True, verbose_name='Описание фото')
+
+    class Meta:
+        verbose_name = "Рисунок"
+        verbose_name_plural = "Рисунки"
+
+    def __str__(self):
+        return self.title

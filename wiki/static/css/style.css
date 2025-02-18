@@ -84,3 +84,17 @@ footer a:hover {
 }
 
 
+/* Галерея */
+.gallery .carousel-caption {
+    position: static;
+}
+
+.gallery .carousel-indicators {
+    position: static; 
+}
+
+.gallery .carousel-item img {
+    object-fit: contain;
+}
+
+
