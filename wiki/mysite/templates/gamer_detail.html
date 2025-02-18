@@ -20,7 +20,7 @@
                             <h4>Играет за персонажей: </h4>
                     </div>
                     <div class="row row-cols-1  mx-5">
-                        {% for personage in object.personages.all %}
+                        {% for personage in personages %}
                             <div class="col">
                                 <a class="text-decoration-none text-center " href='/personages/{{ personage.pk }}' >{{personage.name}}</a>
                             </div>

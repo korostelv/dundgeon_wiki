@@ -16,10 +16,12 @@
       <h3> Cюжетная линия: <a class="text-decoration-none" href="/releases_filter/{{object.line.pk}}">{{object.line}}</a></h3>
     </div>
     <hr>
-    <!-- <div class="col">
-      {{object.annotation|linebreaks}}
-    </div>
-    <hr> -->
+    {% if object.annotation %}
+      <div class="col">
+        {{object.annotation|linebreaks}}
+      </div>
+    <hr>
+    {% endif %}
     <div class="row row-cols-2">
       <div class="col col-12 col-md-4 ">
         <h3>Персонажи: </h3>
@@ -38,6 +40,9 @@
       </div>
     </div>
     <hr>
+
+    {% include 'gallery.html' %}
+
     <div class="col">
       <h3>Видео</h3>
     </div>
@@ -56,7 +61,7 @@
   </div>
   <hr>
 
-
+  <!-- {% include 'gallery.html' %} -->
   
   </div>
 </div>

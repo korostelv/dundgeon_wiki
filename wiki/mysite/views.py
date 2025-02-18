@@ -1,4 +1,4 @@
-
+from platform import release
 
 from django.views.generic import DetailView
 from django.views.generic.list import ListView
@@ -62,6 +62,12 @@ class ReleaseDetailView(DetailView):
     model = Release
     template_name = 'release_detail.html'
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        release_id = self.kwargs.get('pk')
+        context["pictures"] = Picture.objects.filter(release__pk=release_id)
+        return context
+
 
 class GamerDetailView(DetailView):
     model = Gamer
@@ -71,6 +77,8 @@ class GamerDetailView(DetailView):
         context = super().get_context_data(**kwargs)
         gamer_id = self.kwargs.get('pk')
         context["releases"] = Release.objects.filter(gamers__pk=gamer_id).order_by('number')
+        context["personages"] = Personage.objects.filter(gamer__pk=gamer_id)
+
         return context
 
 
