@@ -16,6 +16,7 @@ class PersonageListView(ListView):
     model = Personage
     paginate_by = 15
     allow_empty = False
+    ordering = ['pk']
     template_name = 'personages.html'
 
 
@@ -55,6 +56,7 @@ class ReleaseStoryListView(ListView):
 class GamerListView(ListView):
     model = Gamer
     paginate_by = 15
+    ordering = ['pk']
     template_name = 'gamers.html'
 
 
@@ -98,6 +100,7 @@ class PersonageListFilterView(ListView):
     model = Personage
     paginate_by = 15
     allow_empty = False
+    ordering = ['pk']
     template_name = 'personages_filter.html'
 
     def get_queryset(self):
@@ -114,6 +117,7 @@ class PersonageListFilterView(ListView):
 class PersonageListSearchView(ListView):
     model = Personage
     paginate_by = 15
+    ordering = ['pk']
     template_name = 'personages.html'
 
     def get_queryset(self):
@@ -126,6 +130,7 @@ class PersonageListSearchView(ListView):
 class GamerListSearchView(ListView):
     model = Gamer
     paginate_by = 15
+    ordering = ['pk']
     template_name = 'gamers.html'
 
     def get_queryset(self):
