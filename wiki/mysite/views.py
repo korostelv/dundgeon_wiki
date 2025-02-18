@@ -67,7 +67,7 @@ class ReleaseDetailView(DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         release_id = self.kwargs.get('pk')
-        context["pictures"] = Picture.objects.filter(release__pk=release_id)
+        context["pictures"] = Picture.objects.filter(release__pk=release_id).order_by('release__number')
         return context
 
 
@@ -92,7 +92,7 @@ class PersonageDetailView(DetailView):
         context = super().get_context_data(**kwargs)
         personage_id = self.kwargs.get('pk')
         context["releases"] = Release.objects.filter(personages__pk=personage_id).order_by('number')
-        context["pictures"] = Picture.objects.filter(personage__pk=personage_id)
+        context["pictures"] = Picture.objects.filter(personage__pk=personage_id).order_by('release__number')
         return context
 
 

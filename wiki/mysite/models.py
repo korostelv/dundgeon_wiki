@@ -95,7 +95,6 @@ class Release(models.Model):
     display_personages.short_description = 'Персонажи'
 
 
-
 def picture_upload_to(instance, filename):
     if instance.personage is not None and instance.personage.name:
         return f'gallery/{instance.personage.name}/{filename}'
