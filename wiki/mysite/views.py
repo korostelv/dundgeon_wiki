@@ -67,7 +67,7 @@ class ReleaseDetailView(DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         release_id = self.kwargs.get('pk')
-        context["pictures"] = Picture.objects.filter(release__pk=release_id).order_by('release__number')
+        context["pictures"] = Picture.objects.filter(release__pk=release_id,in_release=True).order_by('release__number')
         return context
 
 

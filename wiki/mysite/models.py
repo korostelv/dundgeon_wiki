@@ -108,6 +108,7 @@ class Picture(models.Model):
     release = models.ForeignKey('Release',  blank=False,null=True, on_delete=models.CASCADE,verbose_name='Выпуск' )
     image = models.ImageField(upload_to=picture_upload_to, blank=False, null=True, verbose_name='Рисунок')
     title = models.CharField(max_length=50, blank=True, verbose_name='Описание фото')
+    in_release = models.BooleanField(default=False, verbose_name='Показывать в выпусках')
 
     class Meta:
         verbose_name = "Рисунок"
