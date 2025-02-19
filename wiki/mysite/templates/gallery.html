@@ -19,7 +19,8 @@
                         {% endif %}
                         {%if p.title%}
                             <div class="carousel-caption d-none d-md-block">
-                                <p>{{p.title}}</p>
+
+                                <p>{% if object.name %} Выпуск {{p.release.number}}. {% endif %}{{p.title}}</p>
                             </div>
                         {%endif%}
 
