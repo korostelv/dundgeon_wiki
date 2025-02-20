@@ -9,6 +9,9 @@ class Race(models.Model):
         verbose_name = "Раса"
         verbose_name_plural = "Расы"
 
+    def get_absolute_url(self):
+        return reverse('mysite:personages_filter',kwargs={'pk': self.pk})
+
     def __str__(self):
         return self.name
 
