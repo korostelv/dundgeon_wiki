@@ -33,6 +33,7 @@ urlpatterns = [
     path('releases_filter/', ReleaseStoryListView.as_view(), name='releases_story'),
     path('about', about, name='about'),
     path('sitemap.xml', TemplateView.as_view(template_name="sitemap.xml", content_type="application/xml"), name="sitemap"),
+    path('robot.txt', TemplateView.as_view(template_name="robot.txt", content_type="text/plain"), name="robot"),
     path('feeds', LatestReleaseFeed(), name='feeds'),
 ]
 urlpatterns += router.urls
