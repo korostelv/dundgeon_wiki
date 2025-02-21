@@ -42,8 +42,8 @@ class ReleaseStoryListView(ListView):
     def get_queryset(self):
         query = self.request.GET.get('q')
         if query:
-            return Release.objects.filter(line__pk=query)
-        return Release.objects.all()
+            return Release.objects.filter(line__pk=query).order_by('number','title')
+        return Release.objects.all().order_by('number','title')
 
     def get_context_data(self, **kwargs):
         query = self.request.GET.get('q')
@@ -144,11 +144,12 @@ class ReleaseListFilterView(ListView):
     model = Release
     paginate_by = 15
     allow_empty = False
+    ordering = ['number', 'title']
     template_name = 'releases_filter.html'
 
     def get_queryset(self):
         line_id = self.kwargs.get('pk')
-        return Release.objects.filter(line=line_id)
+        return Release.objects.filter(line=line_id).order_by('number','title')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
