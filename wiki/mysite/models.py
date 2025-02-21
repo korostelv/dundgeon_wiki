@@ -34,6 +34,9 @@ class Personage(models.Model):
         verbose_name = "Персонаж"
         verbose_name_plural = "Персонажи"
 
+    def get_absolute_url(self):
+        return reverse('mysite:personage_detail',kwargs={'pk': self.pk})
+
     def __str__(self):
         return self.name
 
@@ -46,6 +49,9 @@ class Gamer(models.Model):
     class Meta:
         verbose_name = "Игрок"
         verbose_name_plural = "Игроки"
+
+    def get_absolute_url(self):
+        return reverse('mysite:gamer_detail',kwargs={'pk': self.pk})
 
     def __str__(self):
         return self.name
@@ -62,6 +68,9 @@ class Storyline(models.Model):
     class Meta:
         verbose_name = "Сюжетная линия"
         verbose_name_plural = "Сюжетные линии"
+
+    def get_absolute_url(self):
+        return reverse('mysite:releases_filter',kwargs={'pk': self.pk})
 
     def __str__(self):
         return self.line
