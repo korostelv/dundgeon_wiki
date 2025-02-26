@@ -95,6 +95,31 @@ footer a:hover {
 
 .gallery .carousel-item img {
     object-fit: contain;
+    transition: transform 0.25s ease;
+    cursor: zoom-in;
 }
 
 
+/* Увеличенный рисунок */
+#img-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+    text-align: center;
+    cursor: zoom-out;
+}
+
+#img-overlay img {
+    max-width: 90%;
+    max-height: 90%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}

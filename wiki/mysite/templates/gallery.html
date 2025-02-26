@@ -2,7 +2,7 @@
     {% if pictures %}
     <h4> Галерея </h4>
 
-        <div id="carouselExampleCaptions" class="carousel gallery slide carousel-dark" data-bs-ride="carousel">
+        <div id="carouselExampleCaptions" class="carousel gallery slide carousel-dark">
 
             <div class="carousel-indicators">
                 {% for p in pictures %}
@@ -13,9 +13,9 @@
 
             <div class="carousel-inner" >
                 {% for p in pictures %}
-                    <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                    <div class="carousel-item  {% if forloop.first %}active{% endif %}" data-bs-interval="10000">
                         {% if p.image %}
-                            <img src="{{p.image.url}}" class="d-block w-auto mx-auto"  alt="{{p.personage.name|default:'Изображение карусели'}}">
+                            <img src="{{p.image.url}}" class="picture d-block w-auto mx-auto"  alt="{{p.personage.name|default:'Изображение карусели'}}">
                         {% endif %}
                         {%if p.title%}
                             <div class="carousel-caption d-none d-md-block">
