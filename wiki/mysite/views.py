@@ -33,6 +33,26 @@ class ReleaseListView(ListView):
         return context
 
 
+# class ReleaseStoryListView(ListView):
+#     model = Release
+#     paginate_by = 12
+#     ordering = ['number', 'title']
+#     template_name = 'releases_filter.html'
+#
+#     def get_queryset(self):
+#         query = self.request.GET.get('q')
+#         if query:
+#             return Release.objects.filter(line__pk=query).order_by('number','title')
+#         return Release.objects.all().order_by('number','title')
+#
+#     def get_context_data(self, **kwargs):
+#         query = self.request.GET.get('q')
+#         context = super().get_context_data(**kwargs)
+#         context["storyline"] = Storyline.objects.all()
+#         context['line'] = Storyline.objects.get(pk=query).line
+#         return context
+
+
 class ReleaseStoryListView(ListView):
     model = Release
     paginate_by = 12
@@ -42,14 +62,24 @@ class ReleaseStoryListView(ListView):
     def get_queryset(self):
         query = self.request.GET.get('q')
         if query:
-            return Release.objects.filter(line__pk=query).order_by('number','title')
-        return Release.objects.all().order_by('number','title')
+            return Release.objects.filter(line__pk=query).order_by('number', 'title')
+        return Release.objects.all().order_by('number', 'title')
 
     def get_context_data(self, **kwargs):
-        query = self.request.GET.get('q')
         context = super().get_context_data(**kwargs)
-        # context["storyline"] = Storyline.objects.all()
-        context['line'] = Storyline.objects.get(pk=query).line
+        query = self.request.GET.get('q')
+        # Добавляем все сюжеты в контекст
+        context["storyline"] = Storyline.objects.all()
+        # Проверяем, есть ли параметр q в запросе
+        if query:
+            try:
+                context['line'] = Storyline.objects.get(pk=query).line
+            except Storyline.DoesNotExist:
+                context['line'] = None
+        else:
+            context['line'] = None
+        # Добавляем параметр q в контекст для пагинации
+        context['q'] = query
         return context
 
 
@@ -142,7 +172,7 @@ class GamerListSearchView(ListView):
 
 class ReleaseListFilterView(ListView):
     model = Release
-    paginate_by = 15
+    paginate_by = 12
     allow_empty = False
     ordering = ['number', 'title']
     template_name = 'releases_filter.html'
@@ -156,6 +186,10 @@ class ReleaseListFilterView(ListView):
         line_id = self.kwargs.get('pk')
         context["line"] = Storyline.objects.get(pk=line_id).line
         return context
+
+
+
+
 
 
 # API

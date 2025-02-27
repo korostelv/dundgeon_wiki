@@ -2,8 +2,8 @@ from django.urls import path
 from django.views.generic import TemplateView
 from rest_framework import routers
 from .views import (PersonageListView, ReleaseListView, ReleaseDetailView, GamerListView,
-                    GamerDetailView, PersonageDetailView, PersonageListFilterView, ReleaseListFilterView,
-                    PersonageListSearchView, GamerListSearchView, ReleaseStoryListView,
+                    GamerDetailView, PersonageDetailView, PersonageListFilterView,
+                    PersonageListSearchView, GamerListSearchView, ReleaseStoryListView, ReleaseListFilterView,
                     ReleasAPIView, RacesAPIView, PersonagesAPIView, GamersAPIView, StorylinesAPIView, about, map)
 
 from .feeds import LatestReleaseFeed

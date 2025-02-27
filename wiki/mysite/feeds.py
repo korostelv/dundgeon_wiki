@@ -18,5 +18,8 @@ class LatestReleaseFeed(Feed):
     def item_title(self, item):
         return item.title
 
+    def item_pubdate(self, item):
+        return item.created_at
+
 
 

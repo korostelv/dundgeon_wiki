@@ -86,6 +86,7 @@ class Release(models.Model):
                              verbose_name='Сюжетная линия')
     url = models.URLField(max_length=150, blank=True, verbose_name='Ссылка')
     image = models.ImageField(upload_to='releases', blank=True, null=True, verbose_name='Афиша')
+    created_at = models.DateTimeField(auto_now_add=True,null=True, verbose_name="Дата создания")
 
     class Meta:
         verbose_name = "Выпуск"
