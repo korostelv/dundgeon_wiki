@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Карта Понии{% endblock %}
+{% block content %}
+{% load static %}
+<div class="container">
+
+    <div id="map"></div>
+
+</div>
+
+<script>
+    const imageUrl = "{% static 'map/Ponia_SD.jpg' %}";
+</script>
+
+{% endblock %}
+
+

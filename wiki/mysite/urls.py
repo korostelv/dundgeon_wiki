@@ -4,7 +4,7 @@ from rest_framework import routers
 from .views import (PersonageListView, ReleaseListView, ReleaseDetailView, GamerListView,
                     GamerDetailView, PersonageDetailView, PersonageListFilterView, ReleaseListFilterView,
                     PersonageListSearchView, GamerListSearchView, ReleaseStoryListView,
-                    ReleasAPIView, RacesAPIView, PersonagesAPIView, GamersAPIView, StorylinesAPIView, about)
+                    ReleasAPIView, RacesAPIView, PersonagesAPIView, GamersAPIView, StorylinesAPIView, about, map)
 
 from .feeds import LatestReleaseFeed
 
@@ -43,6 +43,7 @@ urlpatterns = [
     path('releases_filter/<int:pk>/', ReleaseListFilterView.as_view(), name='releases_filter'),
     path('releases_filter/', ReleaseStoryListView.as_view(), name='releases_story'),
     path('about', about, name='about'),
+    path('map', map, name='map'),
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
     path('robot.txt', TemplateView.as_view(template_name="robot.txt", content_type="text/plain"), name="robot"),
     path('feeds', LatestReleaseFeed(), name='feeds'),

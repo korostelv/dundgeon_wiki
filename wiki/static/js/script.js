@@ -54,9 +54,51 @@ $(document).ready(function(){
    });
 
 
-
-
-
-
 });
 
+/****************************************************************************/ 
+
+
+   // Получаем размеры контейнера карты
+   function getMapSize() {
+    const mapDiv = document.getElementById('map');
+    console.log(mapDiv.clientWidth);
+        console.log(mapDiv.clientHeight)
+    return {
+        width: mapDiv.clientWidth,
+        height: mapDiv.clientHeight
+
+    };
+}
+
+    const mapDiv = document.getElementById('map');
+    
+
+
+    // Инициализация карты
+    const map = L.map('map', {
+        crs: L.CRS.Simple, // Используем простую систему координат
+        minZoom: 0,
+        maxZoom: 2,
+        zoom: 0, 
+    });
+
+    // Размеры изображения в пикселях
+    const w = mapDiv.clientWidth;
+    const h = mapDiv.clientHeight;
+
+    
+    // Границы изображения в координатах карты
+    const southWest = map.unproject([0, h], 0);
+    const northEast = map.unproject([w, 0], 0);
+    const bounds = new L.LatLngBounds(southWest, northEast);
+
+ 
+
+    // Добавление изображения как слоя
+    L.imageOverlay(imageUrl , bounds).addTo(map);
+    map.fitBounds(bounds);
+    map.setMaxBounds(bounds); // Устанавливаем границы, чтобы карта не уходила за край
+
+    // Установка начального вида
+    map.fitBounds(bounds);

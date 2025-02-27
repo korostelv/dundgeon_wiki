@@ -124,3 +124,10 @@ footer a:hover {
     transform: translate(-50%, -50%);
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
 }
+
+
+/* Карта */
+#map {
+    width: 80vw;
+    height: 600px;
+}
