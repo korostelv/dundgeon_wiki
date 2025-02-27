@@ -45,7 +45,7 @@ urlpatterns = [
     path('about', about, name='about'),
     path('map', map, name='map'),
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
-    path('robot.txt', TemplateView.as_view(template_name="robot.txt", content_type="text/plain"), name="robot"),
+    path('robots.txt', TemplateView.as_view(template_name="robots.txt", content_type="text/plain"), name="robots"),
     path('feeds', LatestReleaseFeed(), name='feeds'),
 ]
 urlpatterns += router.urls
