@@ -35,7 +35,7 @@ class Personage(models.Model):
         verbose_name_plural = "Персонажи"
 
     def get_absolute_url(self):
-        return reverse('mysite:personage_detail',kwargs={'slug': self.slug})
+        return reverse('mysite:personage_detail',kwargs={'pk': self.pk})
 
     def __str__(self):
         return self.name
