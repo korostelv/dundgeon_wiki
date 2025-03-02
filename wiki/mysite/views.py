@@ -98,6 +98,12 @@ class ReleaseDetailView(DetailView):
         context = super().get_context_data(**kwargs)
         release_id = self.kwargs.get('pk')
         context["pictures"] = Picture.objects.filter(release__pk=release_id,in_release=True).order_by('release__number')
+
+        replacement = {}
+        for pers in Personage.objects.all():
+            replacement[pers.name] = f"/personages/{pers.pk}"
+        context['replacements_dict'] = replacement
+        context['text'] = self.object.annotation or ""
         return context
 
 
@@ -123,6 +129,12 @@ class PersonageDetailView(DetailView):
         personage_id = self.kwargs.get('pk')
         context["releases"] = Release.objects.filter(personages__pk=personage_id).order_by('number')
         context["pictures"] = Picture.objects.filter(personage__pk=personage_id).order_by('release__number')
+
+        replacement = {}
+        for pers in Personage.objects.exclude(pk=personage_id):
+            replacement[pers.name] = f"/personages/{pers.pk}"
+        context['replacements_dict'] = replacement
+        context['text'] = self.object.description or ""
         return context
 
 

@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+{% load links_filter %}
 {% block title %}{{object.title}}{% endblock %}
 
 {% block content %}
@@ -18,7 +18,7 @@
     <hr>
     {% if object.annotation %}
       <div class="col">
-        {{object.annotation|linebreaks}}
+        {{text|replace_words_with_links:replacements_dict|linebreaks}}
       </div>
     <hr>
     {% endif %}

@@ -1,7 +1,8 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title %}{{object.name}}{% endblock %}
 
+{% block title %}{{object.name}}{% endblock %}
+{% load links_filter %}
 {% block content %}
 
 <div class="container content">
@@ -16,7 +17,7 @@
         </div>
         <hr>
         <div class="col">
-            <p>{{object.description|linebreaks}}</p>
+            <p>{{text|replace_words_with_links:replacements_dict|linebreaks}}</p>
         </div>
         <hr>
         <div class="col">
