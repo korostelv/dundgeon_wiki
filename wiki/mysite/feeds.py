@@ -10,7 +10,7 @@ class LatestReleaseFeed(Feed):
     description = "Новые выпуски."
 
     def items(self):
-        return Release.objects.order_by('-number')[:5]
+        return Release.objects.order_by('-number')[:10]
 
     def item_number(self, item):
         return item.number
@@ -20,6 +20,7 @@ class LatestReleaseFeed(Feed):
 
     def item_pubdate(self, item):
         return item.created_at
+
 
 
 

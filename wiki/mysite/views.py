@@ -209,6 +209,16 @@ class ReleasAPIView(viewsets.ModelViewSet):
     queryset = Release.objects.all()
     serializer_class = ReleaseSerializer
     permission_classes = (IsAdminOrReadOnly,)
+    ordering_fields = ['number', 'title']
+    ordering = ['number', 'title']
+    def get_queryset(self):
+        queryset = Release.objects.all()
+        ordering = self.request.query_params.get('ordering', None)
+        if ordering in self.ordering_fields:  # защита от SQL-инъекций
+            queryset = queryset.order_by(ordering)
+        else:
+            queryset = queryset.order_by(*self.ordering)  # сортировка по умолчанию
+        return queryset
 
 
 class RacesAPIView(viewsets.ModelViewSet):

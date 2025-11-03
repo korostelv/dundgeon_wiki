@@ -1,10 +1,19 @@
 from django import template
 from django.utils.safestring import mark_safe
+
 import re
 
 register = template.Library()
 
 @register.filter
+# def replace_words_with_links(text, replacements):
+#     for word, url in replacements.items():
+#         variations = [word, word + "а", word + "е", word + "у", word[:-1] + "а", word[:-1] + "е", word[:-1] + "у", word[:-1] + "ы", word[:-1]]
+#         # pattern = re.compile(rf'\b{re.escape(word)}\b', flags=re.IGNORECASE)
+#         pattern = re.compile(rf'\b({"|".join(map(re.escape, variations))})\b', flags=re.IGNORECASE)
+#         text = pattern.sub(f'<a href="{url}"  class="card-title text-decoration-none">{word}</a>', text)
+#     return mark_safe(text)
+
 def replace_words_with_links(text, replacements):
     for word, url in replacements.items():
         # Создаем список вариантов с окончаниями
