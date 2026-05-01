@@ -214,10 +214,10 @@ class ReleasAPIView(viewsets.ModelViewSet):
     def get_queryset(self):
         queryset = Release.objects.all()
         ordering = self.request.query_params.get('ordering', None)
-        if ordering in self.ordering_fields:  # защита от SQL-инъекций
+        if ordering in self.ordering_fields:
             queryset = queryset.order_by(ordering)
         else:
-            queryset = queryset.order_by(*self.ordering)  # сортировка по умолчанию
+            queryset = queryset.order_by(*self.ordering)
         return queryset
 
 
